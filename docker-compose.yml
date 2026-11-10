@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: vocalsense
+      POSTGRES_PASSWORD: vocalsense
+      POSTGRES_DB: vocalsense
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vocalsense"]
+      interval: 3s
+      retries: 20
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://vocalsense:vocalsense@db:5432/vocalsense
+      SECRET_KEY: change-this-in-production
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173,http://localhost:8080
+    volumes: ["./backend/artifacts:/app/artifacts"]
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ["8000:8000"]
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["5173:80"]
+volumes:
+  pgdata:
