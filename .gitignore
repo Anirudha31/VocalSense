@@ -1,9 +1,102 @@
-backend/.env
-backend/.venv/
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ==============================
+# Environment variables / Secrets
+# ==============================
+.env
+.env.*
+!.env.example
+
+# ==============================
+# ML Models and Artifacts
+# ==============================
 backend/artifacts/*.joblib
+backend/artifacts/*.pkl
+backend/artifacts/*.h5
+backend/artifacts/*.keras
 backend/artifacts/*.pt
 backend/artifacts/*.pth
-__pycache__/
-*.pyc
+backend/artifacts/*.onnx
+
+# Keep artifact documentation if present
+!backend/artifacts/README.md
+
+# ==============================
+# Datasets and Audio
+# ==============================
+datasets/
+dataset/
+data/
+*.wav
+*.mp3
+*.ogg
+*.flac
+*.m4a
+*.webm
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+
+# ==============================
+# Node.js / Frontend
+# ==============================
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Build outputs
 frontend/dist/
+frontend/build/
+dist/
+
+# ==============================
+# IDE / Editors
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==============================
+# Operating System
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Temporary files
+# ==============================
+*.tmp
+*.temp
+*.bak
