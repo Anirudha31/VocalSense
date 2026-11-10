@@ -1,0 +1,9 @@
+backend/.env
+backend/.venv/
+backend/artifacts/*.joblib
+backend/artifacts/*.pt
+backend/artifacts/*.pth
+__pycache__/
+*.pyc
+node_modules/
+frontend/dist/
